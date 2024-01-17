@@ -1,0 +1,15 @@
+version: '3'
+services:
+  codeserver:
+    image: <codeserver>
+    restart: unless-stopped
+    environment:
+      - PASSWORD=password
+    ports:
+      - 8080:8080
+    volumes:
+      - ./home:/home/coder
+      - ./data:/data
+    command: |
+          --disable-update-check
+          --disable-telemetry

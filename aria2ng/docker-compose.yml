@@ -1,0 +1,7 @@
+version: '3'
+services:
+  ariang:
+    image: <ariang>
+    restart: unless-stopped
+    ports:
+      - 6880:6880

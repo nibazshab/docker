@@ -1,0 +1,14 @@
+#!/bin/sh
+
+[[ ! -d /data/init.d ]] && {
+  mkdir /data/init.d
+}
+if [ -n $(ls -A /data/init.d) ]; then
+  for i in /data/init.d/*.sh; do
+    if [ -f $i ]; then
+      chmod +x $i
+      $i
+    fi
+  done
+fi
+exec dumb-init /usr/bin/code-server --user-data-dir /data "$@"

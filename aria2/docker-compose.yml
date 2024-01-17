@@ -1,0 +1,14 @@
+version: '3'
+services:
+  aria2:
+    image: <aria2>
+    restart: unless-stopped
+    environment:
+      - key=password
+    ports:
+      - 6800:6800
+      - 6888:6888
+      - 6888:6888/udp
+    volumes:
+      - ./data:/c
+      - ./d:/d
