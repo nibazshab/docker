@@ -2,6 +2,8 @@ FROM archlinux
 
 COPY rootfs /
 
+VOLUME ["/home/coder", "/data"]
+
 RUN chmod +x /init
 
 RUN curl -L https://github.com/coder/code-server/releases/download/v4.20.0/code-server-4.20.0-linux-amd64.tar.gz > code-server.tgz \
