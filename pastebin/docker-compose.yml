@@ -1,0 +1,9 @@
+version: '3'
+services:
+  webnote:
+    image: <pastebin>
+    restart: unless-stopped
+    ports:
+      - 0.0.0.0:10002:10002
+    volumes:
+      - ./data:/tmp
