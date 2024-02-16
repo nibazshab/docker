@@ -6,9 +6,9 @@ services:
     environment:
       - key=password
     ports:
-      - 6800:6800
-      - 6888:6888
-      - 6888:6888/udp
+      - 0.0.0.0:6800:6800
+      - 0.0.0.0:6888:6888
+      - 0.0.0.0:6888:6888/udp
     volumes:
       - ./data:/c
       - ./d:/d

@@ -4,4 +4,4 @@ services:
     image: <ariang>
     restart: unless-stopped
     ports:
-      - 6880:6880
+      - 0.0.0.0:6880:6880

@@ -6,7 +6,7 @@ services:
     environment:
       - PASSWORD=password
     ports:
-      - 8080:8080
+      - 0.0.0.0:8080:8080
     volumes:
       - ./home:/home/coder
       - ./data:/data
