@@ -1,15 +1,24 @@
+FROM alpine AS build
+
+WORKDIR /rootfs
+
+COPY rootfs .
+
+RUN chmod +x init
+
+WORKDIR /build
+
+ARG ARIA2="https://github.com/abcfy2/aria2-static-build/releases/download/1.37.0/aria2-x86_64-linux-musl_libressl_static.zip"
+
+RUN wget -O aria2-x86_64-linux-musl_libressl_static.zip "$ARIA2" \
+ && unzip -d /rootfs aria2-x86_64-linux-musl_libressl_static.zip
+
 FROM alpine
 
-COPY rootfs /
+COPY --from=build /rootfs /
 
 VOLUME ["/c", "/d"]
 
 RUN apk add --no-cache curl
-
-RUN chmod +x /init
-
-RUN wget https://github.com/P3TERX/Aria2-Pro-Core/releases/download/1.36.0_2021.08.22/aria2-1.36.0-static-linux-amd64.tar.gz -O aria2.tgz \
- && tar -xvf aria2.tgz \
- && rm -rf aria2.tgz
 
 ENTRYPOINT ["/init"]
