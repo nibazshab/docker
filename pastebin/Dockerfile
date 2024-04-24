@@ -1,18 +1,17 @@
 FROM golang AS build
 
-RUN wget https://github.com/nibazshab/pastebin/archive/refs/heads/main.tar.gz \
- && tar -xvf main.tar.gz \
- && cd pastebin-main \
- && CGO_ENABLED=0 go build -ldflags="-s -w"
+ARG PASTEBIN="https://github.com/nibazshab/pastebin/archive/refs/heads/main.tar.gz"
 
 WORKDIR /rootfs
 
-RUN mv /go/pastebin-main/pastebin pastebin
+WORKDIR /build
+RUN wget -O- "$PASTEBIN" | tar -zxvf - --strip-components=1 \
+ && CGO_ENABLED=0 go build -ldflags="-s -w" \
+ && mv pastebin /rootfs
 
 FROM scratch
 
 COPY --from=build /rootfs /
 
 VOLUME ["/tmp"]
-
 ENTRYPOINT ["/pastebin"]
