@@ -1,5 +1,5 @@
 services:
-  webnote:
+  pastebin:
     image: <pastebin>
     restart: unless-stopped
     ports:
