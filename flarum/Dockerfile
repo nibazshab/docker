@@ -16,9 +16,9 @@ RUN apk add --no-cache \
     php-zip \
     php-opcache \
     php-session \
-    s6 \
+    composer \
     su-exec \
-    composer
+    s6
 
 COPY rootfs /
 
