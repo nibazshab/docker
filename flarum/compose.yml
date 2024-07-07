@@ -1,0 +1,21 @@
+services:
+  flarum:
+    image: <pastebin>
+    restart: unless-stopped
+    ports:
+      - 0.0.0.0:18080:8080
+    volumes:
+      - ./data/flarum:/flarum
+      - ./data/start.d:/start.d
+    depends_on:
+      - mariadb
+  mariadb:
+    image: mariadb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=xxxxx
+      - MYSQL_DATABASE=xxxxx
+      - MYSQL_USER=xxxxx
+      - MYSQL_PASSWORD=xxxxx
+    volumes:
+      - ./db:/var/lib/mysql
