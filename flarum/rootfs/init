@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ -n $(ls -A /start.d/) ]; then
+  for i in /start.d/*.sh; do
+    if [ -f $i ]; then
+      chmod +x $i
+      $i
+    fi
+  done
+fi
+
+[[ ! -e /flarum/flarum ]] && {
+  composer create-project flarum/flarum /flarum
+  composer clear-cache
+}
+
+chown -hR 1000:1000 /init.d /run.d /var/log /var/lib/nginx
+chown -hR 1000:1000 /flarum
+
+exec su-exec 1000:1000 /bin/s6-svscan /init.d
