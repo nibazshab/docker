@@ -1,7 +1,3 @@
-# README
-
-Docker 容器
-
 ## 描述文本
 
 ### aria2
