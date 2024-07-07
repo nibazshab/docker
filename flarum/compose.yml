@@ -1,6 +1,6 @@
 services:
   flarum:
-    image: <pastebin>
+    image: <flarum>
     restart: unless-stopped
     ports:
       - 0.0.0.0:18080:8080
