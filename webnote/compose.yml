@@ -1,8 +1,0 @@
-services:
-  webnote:
-    image: <webnote>
-    restart: unless-stopped
-    ports:
-      - 0.0.0.0:10003:10003
-    volumes:
-      - ./data:/tmp
