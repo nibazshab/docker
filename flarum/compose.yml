@@ -5,12 +5,11 @@ services:
     ports:
       - 0.0.0.0:18080:8080
     volumes:
-      - ./data/flarum:/flarum
-      - ./data/start.d:/start.d
+      - ./data:/data
     depends_on:
       - mariadb
   mariadb:
-    image: mariadb
+    image: mariadb:11.4.2
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=xxxxx

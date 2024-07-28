@@ -24,6 +24,7 @@ COPY rootfs /
 
 RUN chmod +x /init /init.d/*/run /init.d/*/finish
 
-VOLUME ["/flarum", "/start.d"]
+VOLUME ["/data"]
 
+WORKDIR /data/flarum
 ENTRYPOINT ["/init"]

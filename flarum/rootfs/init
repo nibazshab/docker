@@ -1,7 +1,11 @@
 #!/bin/sh
 
-if [ -n $(ls -A /start.d/) ]; then
-  for i in /start.d/*.sh; do
+[[ ! -d /data/rc.d ]] && {
+  mkdir /data/rc.d
+}
+
+if [ -n $(ls -A /data/rc.d) ]; then
+  for i in /data/rc.d/*.sh; do
     if [ -f $i ]; then
       chmod +x $i
       $i
@@ -9,12 +13,12 @@ if [ -n $(ls -A /start.d/) ]; then
   done
 fi
 
-[[ ! -e /flarum/flarum ]] && {
-  composer create-project flarum/flarum /flarum
+[[ ! -e /data/flarum/flarum ]] && {
+  composer create-project flarum/flarum /data/flarum
   composer clear-cache
 }
 
 chown -hR 1000:1000 /init.d /run.d /var/log /var/lib/nginx
-chown -hR 1000:1000 /flarum
+chown -hR 1000:1000 /data/flarum
 
 exec su-exec 1000:1000 /bin/s6-svscan /init.d
