@@ -21,6 +21,7 @@ RUN apk add --no-cache \
     s6
 
 COPY rootfs /
+RUN mkdir /temp
 
 RUN chmod +x /init /init.d/*/run /init.d/*/finish
 
