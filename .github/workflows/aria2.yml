@@ -18,9 +18,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build image
-        run: |
-          cd aria2 && docker build -t phhb/aria2 .
+        run: cd aria2 && docker build -t phhb/aria2 .
 
       - name: Push to Docker Hub
-        run: |
-          docker push phhb/aria2
+        run: docker push phhb/aria2
