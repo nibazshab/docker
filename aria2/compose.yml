@@ -1,6 +1,6 @@
 services:
   aria2:
-    image: <aria2>
+    image: phhb/aria2
     restart: unless-stopped
     environment:
       - key=password
