@@ -1,6 +1,6 @@
 services:
   codeserver:
-    image: <codeserver>
+    image: phhb/codeserver
     restart: unless-stopped
     environment:
       - PASSWORD=password
